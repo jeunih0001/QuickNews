@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel='shortcut icon'type="x-icon" href="{{url_for('static',filename='banner.png')}}">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css"
+      integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="{{url_for('static',filename='style.css')}}" />
+    <script
+      defer=""
+      src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"
+    ></script>
+    <script defer="" src="{{url_for('static',filename='script.js')}}"></script>
+    <title>News Api</title>
+</head>
+
+<body>
+  <div class="container">
+    <div class="flash">
+      <h2></h2>
+      <button class="btn">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+    <div class="banner" style="  background-image: linear-gradient(
+      to right,
+      hsla(0, 0%, 0%, 0.7),
+      hsla(0, 0%, 0%, 0.7)
+    ),
+    url({{url_for('static',filename='banner.png')}});">
+      <div class="">
+        <a href="">QUICK NEWS</a>
+        <p>Read the top headlines quickly and easily.</p>
+      </div>
+      <div class="">
+        <button class="toggleLight"><i class="fa-solid fa-lightbulb lg"></i></button>
+        <input class="input" id="search" placeholder="Search" type="text">
+        <input type="submit" data-submit="search">
+      </div>
+    </div>
+    <nav>
+      <div class="navBar">
+        <button id="navToggle"><i class="fa-solid fa-bars lg"></i></button>
+        <ul class="navMenu">
+          <li id="navHome"><a><i class="fa-solid fa-home"></i> Home </a></li>
+          <li class="category">
+            <button class="collapse"><i class="fa-solid fa-business-time"></i> Business <i
+                class="fa-solid fa-angle-down"></i></button>
+            <ul class="collapsible">
+              <li><a data-category="business">All</a></li>
+              <li><a data-source="australian-financial-review">Australian Financial Review</a></li>
+
+              <li><a data-source="bloomberg">Bloomberg</a></li>
+
+              <li><a data-source="business-insider">Business Insider</a></li>
+
+              <li><a data-source="business-insider-uk">Business Insider (UK)</a></li>
+
+              <li><a data-source="financial-post">Financial Post</a></li>
+
+              <li><a data-source="fortune">Fortune</a></li>
+
+              <li><a data-source="the-wall-street-journal">The Wall Street Journal</a></li>
+            </ul>
+          </li>
+          <li class="category">
+            <button class="collapse"><i class="fa-solid fa-star"></i> Entertainment <i
+                class="fa-solid fa-angle-down"></i></button>
+            <ul class="collapsible">
+              <li><a data-category="entertainment">All</a></li>
+              <li><a data-source="buzzfeed">Buzzfeed</a></li>
+
+              <li><a data-source="entertainment-weekly">Entertainment Weekly</a></li>
+
+              <li><a data-source="ign">IGN</a></li>
+
+              <li><a data-source="mashable">Mashable</a></li>
+
+              <li><a data-source="mtv-news">MTV News</a></li>
+
+              <li><a data-source="mtv-news-uk">MTV News (UK)</a></li>
+
+              <li><a data-source="polygon">Polygon</a></li>
+
+              <li><a data-source="the-lad-bible">The Lad Bible</a></li>
+            </ul>
+          </li>
+          <li class="category">
+            <button class="collapse"><i class="fa-solid fa-globe"></i> General <i
+                class="fa-solid fa-angle-down"></i></button>
+            <ul class="collapsible">
+              <li><a data-category="general">All</a></li>
+              <li><a data-source="abc-news">ABC News</a></li>
+
+              <li><a data-source="abc-news-au">ABC News (AU)</a></li>
+
+              <li><a data-source="al-jazeera-english">Al Jazeera English</a></li>
+
+              <li><a data-source="associated-press">Associated Press</a></li>
+
+              <li><a data-source="axios">Axios</a></li>
+
+              <li><a data-source="bbc-news">BBC News</a></li>
+
+              <li><a data-source="breitbart-news">Breitbart News</a></li>
+
+              <li><a data-source="cbc-news">CBC News</a></li>
+
+              <li><a data-source="cbs-news">CBS News</a></li>
+
+              <li><a data-source="cnn">CNN</a></li>
+
+              <li><a data-source="fox-news">Fox News</a></li>
+
+              <li><a data-source="google-news">Google News</a></li>
+
+              <li><a data-source="google-news-au">Google News (Australia)</a></li>
+
+              <li><a data-source="google-news-ca">Google News (Canada)</a></li>
+
+              <li><a data-source="google-news-in">Google News (India)</a></li>
+
+              <li><a data-source="google-news-uk">Google News (UK)</a></li>
+
+              <li><a data-source="independent">Independent</a></li>
+
+              <li><a data-source="msnbc">MSNBC</a></li>
+
+              <li><a data-source="national-review">National Review</a></li>
+
+              <li><a data-source="nbc-news">NBC News</a></li>
+
+              <li><a data-source="news24">News24</a></li>
+
+              <li><a data-source="news-com-au">News.com.au</a></li>
+
+              <li><a data-source="newsweek">Newsweek</a></li>
+
+              <li><a data-source="new-york-magazine">New York Magazine</a></li>
+
+              <li><a data-source="politico">Politico</a></li>
+
+              <li><a data-source="reddit-r-all">Reddit /r/all</a></li>
+
+              <li><a data-source="reuters">Reuters</a></li>
+
+              <li><a data-source="rte">RTE</a></li>
+
+              <li><a data-source="the-american-conservative">The American Conservative</a></li>
+
+              <li><a data-source="the-globe-and-mail">The Globe And Mail</a></li>
+
+              <li><a data-source="the-hill">The Hill</a></li>
+
+              <li><a data-source="the-hindu">The Hindu</a></li>
+
+              <li><a data-source="the-huffington-post">The Huffington Post</a></li>
+
+              <li><a data-source="the-irish-times">The Irish Times</a></li>
+
+              <li><a data-source="the-jerusalem-post">The Jerusalem Post</a></li>
+
+              <li><a data-source="the-times-of-india">The Times of India</a></li>
+
+              <li><a data-source="the-washington-post">The Washington Post</a></li>
+
+              <li><a data-source="the-washington-times">The Washington Times</a></li>
+
+              <li><a data-source="time">Time</a></li>
+
+              <li><a data-source="usa-today">USA Today</a></li>
+
+              <li><a data-source="vice-news">Vice News</a></li>
+            </ul>
+          </li>
+          <li class="category">
+            <button class="collapse"><i class="fa-solid fa-notes-medical "></i> Health <i
+                class="fa-solid fa-angle-down"></i></button>
+            <ul class="collapsible">
+              <li><a data-category="health">All</a></li>
+              <li><a data-source="medical-news-today">Medical News Today</a></li>
+            </ul>
+          </li>
+          <li class="category">
+            <button class="collapse"><i class="fa-solid fa-flask"></i> Science <i
+                class="fa-solid fa-angle-down"></i></button>
+            <ul class="collapsible">
+              <li><a data-category="science">All</a></li>
+              <li><a data-source="national-geographic">National Geographic</a></li>
+
+              <li><a data-source="new-scientist">New Scientist</a></li>
+
+              <li><a data-source="next-big-future">Next Big Future</a></li>
+            </ul>
+          </li>
+          <li class="category">
+            <button class="collapse"><i class="fa-solid fa-volleyball"></i> Sports <i
+                class="fa-solid fa-angle-down"></i></button>
+            <ul class="collapsible">
+              <li><a data-category="sports">All</a></li>
+              <li><a data-source="bbc-sport">BBC Sport</a></li>
+
+              <li><a data-source="bleacher-report">Bleacher Report</a></li>
+
+              <li><a data-source="espn">ESPN</a></li>
+
+              <li><a data-source="espn-cric-info">ESPN Cric Info</a></li>
+
+              <li><a data-source="football-italia">Football Italia</a></li>
+
+              <li><a data-source="four-four-two">FourFourTwo</a></li>
+
+              <li><a data-source="fox-sports">Fox Sports</a></li>
+
+              <li><a data-source="nfl-news">NFL News</a></li>
+
+              <li><a data-source="nhl-news">NHL News</a></li>
+
+              <li><a data-source="talksport">TalkSport</a></li>
+
+              <li><a data-source="the-sport-bible">The Sport Bible</a></li>
+            </ul>
+          </li>
+          <li class="category">
+            <button class="collapse"><i class="fa-solid fa-microchip"></i>Technology<i
+                class="fa-solid fa-angle-down"></i></button>
+            <ul class="collapsible">
+              <li><a data-category="technology">All</a></li>
+              <li><a data-source="ars-technica">Ars Technica</a></li>
+
+              <li><a data-source="crypto-coins-news">Crypto Coins News</a></li>
+
+              <li><a data-source="engadget">Engadget</a></li>
+
+              <li><a data-source="hacker-news">Hacker News</a></li>
+
+              <li><a data-source="recode">Recode</a></li>
+
+              <li><a data-source="techcrunch">TechCrunch</a></li>
+
+              <li><a data-source="techradar">TechRadar</a></li>
+
+              <li><a data-source="the-next-web">The Next Web</a></li>
+
+              <li><a data-source="the-verge">The Verge</a></li>
+
+              <li><a data-source="wired">Wired</a></li>
+            </ul>
+          </li>
+        </ul>
+        <div class="navTools">
+          <button class="toggleLight"><i class="fa-solid fa-lightbulb lg"></i></button>
+          <div class="searchBox">
+            <button class="collapse" id="searchToggle"><i class="fa-solid fa-magnifying-glass lg"></i></button>
+            <div class="collapsible">
+              <input class="input" id="search" placeholder="Search" type="text">
+              <input type="submit" data-submit="search">
+            </div>
+          </div>
+      </div>
+      </div>
+    </nav>
+    <div class="headline-cont">
+      <ul class="headlines-box">
+      </ul>
+      <button id="top" onclick="window.scroll(0,0)"><i class="fa-solid fa-arrow-up icon-lg"></i></button>
+    </div>
+    <div class="main">
+      <div class="side-headlines-cont">
+        <h1 class="header">Top Headlines</h1>
+        <ul class="side-headlines-box">
+        </ul>
+      </div>
+      <div class="news-box">
+        <div class="newsOps">
+          <h2>From : <span id="current">Everywhere</span></h2>
+          <div class="filters">
+            <button><i class="fa-solid fa-sort"></i> Sort</button>
+            <ul class="dropdown">
+              <li><button data-filter="publishedAt">New</button></li>
+              <li class="popular">
+                <button><i class="fa-solid fa-caret-left"></i> Popular</button>
+                <ul class="dropdown">
+                  <li><button data-filter="1">Day</button></li>
+                  <li><button data-filter="7">Week</button></li>
+                  <li><button data-filter="30">Month</button></li>
+                  <li><button data-filter="360">Year</button></li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <ul class="articles">
+        </ul>
+      </div>
+      <div class="weather-box" style="  background-image: linear-gradient(
+      to right,
+      hsla(0, 0%, 100%, 0.7),
+      hsla(211, 31%, 47%, 0.7)
+    ),
+    url({{url_for('static',filename='nf.jpg')}}">
+        <h1 class="header">Weather Forecast</h1>
+        <div class="weather-op">
+          <input class="input" disabled placeholder="Enter a city" value="" id="city-input" type="text">
+          <span data-submit="addCity"></span>
+          <button id="editCity"><i class="fa-solid fa-pen"></i></button>
+        </div>
+        <div class="temp">
+          <h1 id="temp"></h1>
+          <img id="icon"alt="">
+        </div>
+        <h2 id="descr"></h2>
+
+
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
